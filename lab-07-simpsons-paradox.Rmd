@@ -75,6 +75,7 @@ I think these data come from an observational study because the researchers did 
 
 2.  How many observations are in this dataset?
     What does each observation represent?
+There are 5000 observations in this dataset. Each observation represents an individual participant in the study, with their corresponding age, smoking status at baseline, and health outcome after 20 years. 
 
 3.  How many variables are in this dataset?
     What type of variable is each?
