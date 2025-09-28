@@ -112,7 +112,11 @@ Knit, *commit, and push your changes to GitHub with an appropriate commit messag
 
 ```{r}
 Whickham %>%
-  count(smoker, outcome)
+  count(smoker, outcome) %>%
+  ggplot(aes(x = smoker, y = n, fill = outcome)) +
+  geom_bar(stat = "identity", position = "fill") +
+  labs(y = "Proportion", title = "Health Outcome by Smoking Status") +
+  scale_y_continuous(labels = scales::percent)
 ```
 
 6.  Create a new variable called `age_cat` using the following scheme:
