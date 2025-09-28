@@ -125,6 +125,16 @@ Whickham %>%
 -   `age > 44 & age <= 64 ~ "45-64"`
 -   `age > 64 ~ "65+"`
 
+```{r}
+Whickham <- Whickham %>%
+  mutate(age_cat = case_when(
+    age <= 44 ~ "18-44",
+    age > 44 & age <= 64 ~ "45-64",
+    age > 64 ~ "65+"
+  ))
+table(Whickham$age_cat)
+```
+
 7.  Re-create the visualization depicting the relationship between smoking status and health outcome, faceted by `age_cat`. What changed? What might explain this change? Extend the contingency table from earlier by breaking it down by age category and use it to help your narrative.
 
 ```{r}
