@@ -104,6 +104,7 @@ ggplot(Whickham, aes(x = outcome)) +
 ```
 
 4.  What would you expect the relationship between smoking status and health outcome to be?
+I would expect that smokers are more likely to have a negative health outcome (i.e., be dead) compared to non-smokers. This expectation is based on the well-established link between smoking and various health issues, including respiratory diseases, cardiovascular diseases, and cancer, which can lead to higher mortality rates among smokers.
 
 Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.*
 
