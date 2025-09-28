@@ -1,0 +1,348 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Lab 07 - Smokers in Whickham},
+  pdfauthor={Tina Huynh},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Lab 07 - Smokers in Whickham}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Simpson's paradox}
+\author{Tina Huynh}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\pandocbounded{\includegraphics[keepaspectratio]{img/whickham.png}}
+
+A study of conducted in Whickham, England recorded participants' age,
+smoking status at baseline, and then 20 years later recorded their
+health outcome. In this lab we analyse the relationships between these
+variables, first two at a time, and then controlling for the third.
+
+\section{Learning goals}\label{learning-goals}
+
+\begin{itemize}
+\tightlist
+\item
+  Visualising relationships between variables
+\item
+  Discovering Simpson's paradox via visualisations
+\end{itemize}
+
+\section{Getting started}\label{getting-started}
+
+Go to the course GitHub organization and locate your homework repo,
+clone it in RStudio and open the R Markdown document. Knit the document
+to make sure it compiles without errors.
+
+\subsection{Warm up}\label{warm-up}
+
+Before we introduce the data, let's warm up with some simple exercises.
+Update the YAML of your R Markdown file with your information, knit,
+commit, and push your changes. Make sure to commit with a meaningful
+commit message. Then, go to your repo on GitHub and confirm that your
+changes are visible in your Rmd \textbf{and} md files. If anything is
+missing, commit and push again.
+
+\subsection{Packages}\label{packages}
+
+We'll use the \textbf{tidyverse} package for much of the data wrangling
+and visualisation and the data lives in the \textbf{mosaicData} package.
+These packages are already installed for you. You can load them by
+running the following in your Console:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse) }
+\FunctionTok{library}\NormalTok{(mosaicData) }
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Data}\label{data}
+
+The dataset we'll use is called Whickham from the \textbf{mosaicData}
+package. You can find out more about the dataset by inspecting their
+documentation, which you can access by running \texttt{?Whickham} in the
+Console or using the Help menu in RStudio to search for
+\texttt{Whickham}.
+
+\section{Exercises}\label{exercises}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  What type of study do you think these data come from: observational or
+  experiment? Why? I think these data come from an observational study
+  because the researchers did not manipulate any variables, they simply
+  observed and recorded the smoking status and health outcomes of the
+  participants over a 20-year period.
+\item
+  How many observations are in this dataset? What does each observation
+  represent? There are 5000 observations in this dataset. Each
+  observation represents an individual participant in the study, with
+  their corresponding age, smoking status at baseline, and health
+  outcome after 20 years.
+\item
+  How many variables are in this dataset? What type of variable is each?
+  Display each variable using an appropriate visualization. There are 3
+  variables in this dataset:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Age: Continuous variable (numeric)
+\item
+  Smoker: Categorical variable (factor with levels ``yes'' and ``no'')
+\item
+  Outcome: Categorical variable (factor with levels ``alive'' and
+  ``dead'')
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualizing Age}
+\FunctionTok{ggplot}\NormalTok{(Whickham, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ age)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribution of Age"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Age"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Count"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualizing Smoker}
+\FunctionTok{ggplot}\NormalTok{(Whickham, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ smoker)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{fill =} \StringTok{"green"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Smoking Status"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Smoker"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Count"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualizing Outcome}
+\FunctionTok{ggplot}\NormalTok{(Whickham, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ outcome)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{fill =} \StringTok{"red"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Health Outcome"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Outcome"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Count"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  What would you expect the relationship between smoking status and
+  health outcome to be? I would expect that smokers are more likely to
+  have a negative health outcome (i.e., be dead) compared to
+  non-smokers. This expectation is based on the well-established link
+  between smoking and various health issues, including respiratory
+  diseases, cardiovascular diseases, and cancer, which can lead to
+  higher mortality rates among smokers.
+\end{enumerate}
+
+Knit, \emph{commit, and push your changes to GitHub with an appropriate
+commit message. Make sure to commit and push all changed files so that
+your Git pane is cleared up afterwards.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Create a visualization depicting the relationship between smoking
+  status and health outcome. Briefly describe the relationship, and
+  evaluate whether this meets your expectations. Additionally, calculate
+  the relevant conditional probabilities to help your narrative. Here is
+  some code to get you started:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Whickham }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{(smoker, outcome) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ smoker, }\AttributeTok{y =}\NormalTok{ n, }\AttributeTok{fill =}\NormalTok{ outcome)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"fill"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Proportion"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Health Outcome by Smoking Status"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{percent)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Create a new variable called \texttt{age\_cat} using the following
+  scheme:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{age\ \textless{}=\ 44\ \textasciitilde{}\ "18-44"}
+\item
+  \texttt{age\ \textgreater{}\ 44\ \&\ age\ \textless{}=\ 64\ \textasciitilde{}\ "45-64"}
+\item
+  \texttt{age\ \textgreater{}\ 64\ \textasciitilde{}\ "65+"}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Whickham }\OtherTok{\textless{}{-}}\NormalTok{ Whickham }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{age\_cat =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{    age }\SpecialCharTok{\textless{}=} \DecValTok{44} \SpecialCharTok{\textasciitilde{}} \StringTok{"18{-}44"}\NormalTok{,}
+\NormalTok{    age }\SpecialCharTok{\textgreater{}} \DecValTok{44} \SpecialCharTok{\&}\NormalTok{ age }\SpecialCharTok{\textless{}=} \DecValTok{64} \SpecialCharTok{\textasciitilde{}} \StringTok{"45{-}64"}\NormalTok{,}
+\NormalTok{    age }\SpecialCharTok{\textgreater{}} \DecValTok{64} \SpecialCharTok{\textasciitilde{}} \StringTok{"65+"}
+\NormalTok{  ))}
+\FunctionTok{table}\NormalTok{(Whickham}\SpecialCharTok{$}\NormalTok{age\_cat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Re-create the visualization depicting the relationship between smoking
+  status and health outcome, faceted by \texttt{age\_cat}. What changed?
+  What might explain this change? Extend the contingency table from
+  earlier by breaking it down by age category and use it to help your
+  narrative.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Whickham }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{(smoker, age\_cat, outcome) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ smoker, }\AttributeTok{y =}\NormalTok{ n, }\AttributeTok{fill =}\NormalTok{ outcome)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"fill"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Proportion"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Health Outcome by Smoking Status and Age Category"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{percent) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ age\_cat)}
+\end{Highlighting}
+\end{Shaded}
+
+Knit, \emph{commit, and push your changes to GitHub with an appropriate
+commit message. Make sure to commit and push all changed files so that
+your Git pane is cleared up afterwards and review the md document on
+GitHub to make sure you're happy with the final state of your work.}
+
+Now go back through your write up to make sure you've answered all
+questions and all of your R chunks are properly labeled. Once you decide
+that you are done with the homework, choose the knit drop down and
+select \texttt{Knit\ to\ tufte\_handout} to generate a pdf. Download and
+submit that pdf to Canvas.
+
+\end{document}
