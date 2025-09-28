@@ -84,6 +84,24 @@ There are 3 variables in this dataset:
 - Age: Continuous variable (numeric)
 - Smoker: Categorical variable (factor with levels "yes" and "no")
 - Outcome: Categorical variable (factor with levels "alive" and "dead")
+```{r}
+# Visualizing Age
+ggplot(Whickham, aes(x = age)) +
+  geom_histogram(binwidth = 5, fill = "blue", color = "black") +
+  labs(title = "Distribution of Age", x = "Age", y = "Count")
+```
+```{r}
+# Visualizing Smoker
+ggplot(Whickham, aes(x = smoker)) +
+  geom_bar(fill = "green", color = "black") +
+  labs(title = "Smoking Status", x = "Smoker", y = "Count")
+```
+```{r}
+# Visualizing Outcome
+ggplot(Whickham, aes(x = outcome)) +
+  geom_bar(fill = "red", color = "black") +
+  labs(title = "Health Outcome", x = "Outcome", y = "Count")
+```
 
 4.  What would you expect the relationship between smoking status and health outcome to be?
 
