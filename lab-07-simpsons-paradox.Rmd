@@ -80,6 +80,10 @@ There are 5000 observations in this dataset. Each observation represents an indi
 3.  How many variables are in this dataset?
     What type of variable is each?
     Display each variable using an appropriate visualization.
+There are 3 variables in this dataset:
+- Age: Continuous variable (numeric)
+- Smoker: Categorical variable (factor with levels "yes" and "no")
+- Outcome: Categorical variable (factor with levels "alive" and "dead")
 
 4.  What would you expect the relationship between smoking status and health outcome to be?
 
