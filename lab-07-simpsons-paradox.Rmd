@@ -126,7 +126,7 @@ Whickham %>%
   group_by(smoker) %>%
   mutate(prop = n / sum(n)) %>%
   select(smoker, outcome, prop) %>%
-    pivot_wider(names_from = outcome, values_from = prop)
+  pivot_wider(names_from = outcome, values_from = prop)
 ```
 
 Surprisingly, the visualization shows that smokers have a lower proportion of deaths (around 24%) compared to non-smokers (around 31%). This does NOT meet my expectations, as I would have expected smokers to have higher mortality rates. This counterintuitive result suggests there may be a confounding variable at play.
