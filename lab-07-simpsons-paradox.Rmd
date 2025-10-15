@@ -163,6 +163,15 @@ Whickham %>%
   facet_wrap(~age_cat)
 ```
 
+```{r}
+# Extended contingency table with conditional probabilities by age group
+Whickham %>%
+  count(smoker, age_cat, outcome) %>%
+  group_by(smoker, age_cat) %>%
+  mutate(prop = n / sum(n)) %>%
+  filter(outcome == "dead") %>%
+  select(smoker, age_cat, prop) %>%
+  pivot_wider(names_from = smoker, values_from = prop)
 ```
 
 Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and review the md document on GitHub to make sure you're happy with the final state of your work.*
