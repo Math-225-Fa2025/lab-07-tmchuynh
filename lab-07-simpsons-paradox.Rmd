@@ -125,11 +125,13 @@ Whickham %>%
   count(smoker, outcome) %>%
   group_by(smoker) %>%
   mutate(prop = n / sum(n)) %>%
-  filter(outcome == "dead") %>%
-  select(smoker, prop)
+  select(smoker, outcome, prop) %>%
+    pivot_wider(names_from = outcome, values_from = prop)
 ```
 
 Surprisingly, the visualization shows that smokers have a lower proportion of deaths (around 24%) compared to non-smokers (around 31%). This does NOT meet my expectations, as I would have expected smokers to have higher mortality rates. This counterintuitive result suggests there may be a confounding variable at play.
+
+The conditional probabilities show that among smokers, 76.3% are alive and 23.7% are dead, while among non-smokers, 68.6% are alive and 31.4% are dead. This means smokers have a lower death rate (23.7%) compared to non-smokers (31.4%). This counterintuitive result suggests there may be a confounding variable at play.
 
 6.  Create a new variable called `age_cat` using the following scheme:
 
