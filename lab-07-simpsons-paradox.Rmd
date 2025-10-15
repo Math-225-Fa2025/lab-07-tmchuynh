@@ -3,15 +3,6 @@ title: "Lab 07 - Smokers in Whickham"
 author: "Tina Huynh"
 subtitle: "Simpson's paradox"
 output: 
-  tufte::tufte_html:
-    css: ../lab.css
-    tufte_variant: "envisioned"
-    highlight: pygments
-  tufte::tufte_handout:
-    latex_engine: xelatex
-    highlight: pygments
-    keep_tex: true
-    citation_package: natbib
   pdf_document:
     latex_engine: xelatex
     toc: true
@@ -57,7 +48,7 @@ We'll use the **tidyverse** package for much of the data wrangling and visualisa
 These packages are already installed for you.
 You can load them by running the following in your Console:
 
-```{r eval = TRUE, message = FALSE}
+```{r, eval=TRUE, message = FALSE}
 library(tidyverse)
 library(mosaicData)
 ```
@@ -84,19 +75,19 @@ There are 3 variables in this dataset:
 - Age: Continuous variable (numeric)
 - Smoker: Categorical variable (factor with levels "yes" and "no")
 - Outcome: Categorical variable (factor with levels "alive" and "dead")
-```{r}
+```{r, eval=TRUE}
 # Visualizing Age
 ggplot(Whickham, aes(x = age)) +
   geom_histogram(binwidth = 5, fill = "blue", color = "black") +
   labs(title = "Distribution of Age", x = "Age", y = "Count")
 ```
-```{r}
+```{r, eval=TRUE}
 # Visualizing Smoker
 ggplot(Whickham, aes(x = smoker)) +
   geom_bar(fill = "green", color = "black") +
   labs(title = "Smoking Status", x = "Smoker", y = "Count")
 ```
-```{r}
+```{r, eval=TRUE}
 # Visualizing Outcome
 ggplot(Whickham, aes(x = outcome)) +
   geom_bar(fill = "red", color = "black") +
@@ -110,7 +101,7 @@ Knit, *commit, and push your changes to GitHub with an appropriate commit messag
 
 5.  Create a visualization depicting the relationship between smoking status and health outcome. Briefly describe the relationship, and evaluate whether this meets your expectations. Additionally, calculate the relevant conditional probabilities to help your narrative. Here is some code to get you started:
 
-```{r}
+```{r, eval=TRUE}
 Whickham %>%
   count(smoker, outcome) %>%
   ggplot(aes(x = smoker, y = n, fill = outcome)) +
@@ -119,7 +110,7 @@ Whickham %>%
   scale_y_continuous(labels = scales::percent)
 ```
 
-```{r}
+```{r, eval=TRUE}
 # Calculate conditional probabilities
 Whickham %>%
   count(smoker, outcome) %>%
@@ -139,7 +130,7 @@ The conditional probabilities show that among smokers, 76.3% are alive and 23.7%
 -   `age > 44 & age <= 64 ~ "45-64"`
 -   `age > 64 ~ "65+"`
 
-```{r}
+```{r, eval=TRUE}
 Whickham <- Whickham %>%
   mutate(age_cat = case_when(
     age <= 44 ~ "18-44",
@@ -153,7 +144,7 @@ table(Whickham$age_cat)
 
 7.  Re-create the visualization depicting the relationship between smoking status and health outcome, faceted by `age_cat`. What changed? What might explain this change? Extend the contingency table from earlier by breaking it down by age category and use it to help your narrative.
 
-```{r}
+```{r, eval=TRUE}
 Whickham %>%
   count(smoker, age_cat, outcome) %>%
   ggplot(aes(x = smoker, y = n, fill = outcome)) +
@@ -163,7 +154,7 @@ Whickham %>%
   facet_wrap(~age_cat)
 ```
 
-```{r}
+```{r, eval=TRUE}
 # Extended contingency table with conditional probabilities by age group
 Whickham %>%
   count(smoker, age_cat, outcome) %>%
