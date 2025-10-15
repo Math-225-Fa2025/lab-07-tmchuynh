@@ -119,6 +119,16 @@ Whickham %>%
   scale_y_continuous(labels = scales::percent)
 ```
 
+```{r}
+# Calculate conditional probabilities
+Whickham %>%
+  count(smoker, outcome) %>%
+  group_by(smoker) %>%
+  mutate(prop = n / sum(n)) %>%
+  filter(outcome == "dead") %>%
+  select(smoker, prop)
+```
+
 6.  Create a new variable called `age_cat` using the following scheme:
 
 -   `age <= 44 ~ "18-44"`
