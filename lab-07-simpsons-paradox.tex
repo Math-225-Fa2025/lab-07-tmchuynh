@@ -165,8 +165,8 @@ running the following in your Console:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(tidyverse) }
-\FunctionTok{library}\NormalTok{(mosaicData) }
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(mosaicData)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -279,6 +279,30 @@ your Git pane is cleared up afterwards.}
 \end{Highlighting}
 \end{Shaded}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate conditional probabilities}
+\NormalTok{Whickham }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{(smoker, outcome) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(smoker) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{prop =}\NormalTok{ n }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(n)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(smoker, outcome, prop) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ outcome, }\AttributeTok{values\_from =}\NormalTok{ prop)}
+\end{Highlighting}
+\end{Shaded}
+
+Surprisingly, the visualization shows that smokers have a lower
+proportion of deaths (around 24\%) compared to non-smokers (around
+31\%). This does NOT meet my expectations, as I would have expected
+smokers to have higher mortality rates. This counterintuitive result
+suggests there may be a confounding variable at play.
+
+The conditional probabilities show that among smokers, 76.3\% are alive
+and 23.7\% are dead, while among non-smokers, 68.6\% are alive and
+31.4\% are dead. This means smokers have a lower death rate (23.7\%)
+compared to non-smokers (31.4\%). This counterintuitive result suggests
+there may be a confounding variable at play.
+
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{5}
@@ -305,7 +329,9 @@ your Git pane is cleared up afterwards.}
 \NormalTok{    age }\SpecialCharTok{\textless{}=} \DecValTok{44} \SpecialCharTok{\textasciitilde{}} \StringTok{"18{-}44"}\NormalTok{,}
 \NormalTok{    age }\SpecialCharTok{\textgreater{}} \DecValTok{44} \SpecialCharTok{\&}\NormalTok{ age }\SpecialCharTok{\textless{}=} \DecValTok{64} \SpecialCharTok{\textasciitilde{}} \StringTok{"45{-}64"}\NormalTok{,}
 \NormalTok{    age }\SpecialCharTok{\textgreater{}} \DecValTok{64} \SpecialCharTok{\textasciitilde{}} \StringTok{"65+"}
-\NormalTok{  ))}
+\NormalTok{  )) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{age\_cat =} \FunctionTok{factor}\NormalTok{(age\_cat, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"18{-}44"}\NormalTok{, }\StringTok{"45{-}64"}\NormalTok{, }\StringTok{"65+"}\NormalTok{)))}
+
 \FunctionTok{table}\NormalTok{(Whickham}\SpecialCharTok{$}\NormalTok{age\_cat)}
 \end{Highlighting}
 \end{Shaded}
@@ -330,9 +356,35 @@ your Git pane is cleared up afterwards.}
   \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"fill"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Proportion"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Health Outcome by Smoking Status and Age Category"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{percent) }\SpecialCharTok{+}
-  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ age\_cat)}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{age\_cat)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extended contingency table with conditional probabilities by age group}
+\NormalTok{Whickham }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{(smoker, age\_cat, outcome) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(smoker, age\_cat) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{prop =}\NormalTok{ n }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(n)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(outcome }\SpecialCharTok{==} \StringTok{"dead"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(smoker, age\_cat, prop) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ smoker, }\AttributeTok{values\_from =}\NormalTok{ prop)}
+\end{Highlighting}
+\end{Shaded}
+
+What changed: When we control for age, the relationship reverses! Within
+each age group, smokers now show higher mortality rates than
+non-smokers, which aligns with our expectations.
+
+What explains this change: This is Simpson's Paradox. The original
+relationship was confounded by age because: 1. Younger people are more
+likely to smoke 2. Younger people are also much less likely to die
+during the 20-year study period 3. When we don't control for age, the
+protective effect of being young masks the harmful effect of smoking
+
+The age-stratified analysis reveals the true relationship: smoking
+increases mortality risk within each age group.
 
 Knit, \emph{commit, and push your changes to GitHub with an appropriate
 commit message. Make sure to commit and push all changed files so that
