@@ -58,8 +58,8 @@ These packages are already installed for you.
 You can load them by running the following in your Console:
 
 ```{r eval = TRUE, message = FALSE}
-library(tidyverse) 
-library(mosaicData) 
+library(tidyverse)
+library(mosaicData)
 ```
 
 ## Data
