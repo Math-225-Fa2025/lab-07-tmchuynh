@@ -267,7 +267,7 @@ I would expect that smokers are more likely to have a negative health outcome (i
 <span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="fu">group_by</span>(smoker) <span class="sc">%&gt;%</span></span>
 <span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
 <span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="fu">select</span>(smoker, outcome, prop) <span class="sc">%&gt;%</span></span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> outcome, <span class="at">values_from =</span> prop)</span></code></pre></div>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> outcome, <span class="at">values_from =</span> prop)</span></code></pre></div>
 <p>Surprisingly, the visualization shows that smokers have a lower proportion of deaths (around 24%) compared to non-smokers (around 31%). This does NOT meet my expectations, as I would have expected smokers to have higher mortality rates. This counterintuitive result suggests there may be a confounding variable at play.</p>
 <p>The conditional probabilities show that among smokers, 76.3% are alive and 23.7% are dead, while among non-smokers, 68.6% are alive and 31.4% are dead. This means smokers have a lower death rate (23.7%) compared to non-smokers (31.4%). This counterintuitive result suggests there may be a confounding variable at play.</p>
 <ol start="6" style="list-style-type: decimal">

@@ -287,7 +287,7 @@ your Git pane is cleared up afterwards.}
   \FunctionTok{group\_by}\NormalTok{(smoker) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{prop =}\NormalTok{ n }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(n)) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{select}\NormalTok{(smoker, outcome, prop) }\SpecialCharTok{\%\textgreater{}\%}
-    \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ outcome, }\AttributeTok{values\_from =}\NormalTok{ prop)}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ outcome, }\AttributeTok{values\_from =}\NormalTok{ prop)}
 \end{Highlighting}
 \end{Shaded}
 
