@@ -176,6 +176,13 @@ Whickham %>%
 
 What changed: When we control for age, the relationship reverses! Within each age group, smokers now show higher mortality rates than non-smokers, which aligns with our expectations.
 
+What explains this change: This is Simpson's Paradox. The original relationship was confounded by age because:
+1. Younger people are more likely to smoke
+2. Younger people are also much less likely to die during the 20-year study period
+3. When we don't control for age, the protective effect of being young masks the harmful effect of smoking
+
+The age-stratified analysis reveals the true relationship: smoking increases mortality risk within each age group.
+
 Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and review the md document on GitHub to make sure you're happy with the final state of your work.*
 
 Now go back through your write up to make sure you've answered all questions and all of your R chunks are properly labeled. Once you decide that you are done with the homework, choose the knit drop down and select `Knit to tufte_handout` to generate a pdf. Download and submit that pdf to Canvas. 
