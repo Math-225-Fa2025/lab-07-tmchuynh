@@ -220,6 +220,8 @@ Console or using the Help menu in RStudio to search for
 \end{Highlighting}
 \end{Shaded}
 
+\pandocbounded{\includegraphics[keepaspectratio]{lab-07-simpsons-paradox_files/figure-latex/unnamed-chunk-3-1.pdf}}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Visualizing Smoker}
@@ -229,6 +231,8 @@ Console or using the Help menu in RStudio to search for
 \end{Highlighting}
 \end{Shaded}
 
+\pandocbounded{\includegraphics[keepaspectratio]{lab-07-simpsons-paradox_files/figure-latex/unnamed-chunk-4-1.pdf}}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Visualizing Outcome}
@@ -237,6 +241,8 @@ Console or using the Help menu in RStudio to search for
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Health Outcome"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Outcome"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Count"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{lab-07-simpsons-paradox_files/figure-latex/unnamed-chunk-5-1.pdf}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -279,6 +285,8 @@ your Git pane is cleared up afterwards.}
 \end{Highlighting}
 \end{Shaded}
 
+\pandocbounded{\includegraphics[keepaspectratio]{lab-07-simpsons-paradox_files/figure-latex/unnamed-chunk-6-1.pdf}}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Calculate conditional probabilities}
@@ -290,6 +298,15 @@ your Git pane is cleared up afterwards.}
   \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ outcome, }\AttributeTok{values\_from =}\NormalTok{ prop)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+## # Groups:   smoker [2]
+##   smoker Alive  Dead
+##   <fct>  <dbl> <dbl>
+## 1 No     0.686 0.314
+## 2 Yes    0.761 0.239
+\end{verbatim}
 
 Surprisingly, the visualization shows that smokers have a lower
 proportion of deaths (around 24\%) compared to non-smokers (around
@@ -336,6 +353,12 @@ there may be a confounding variable at play.
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+## 
+## 18-44 45-64   65+ 
+##   624   447   243
+\end{verbatim}
+
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{6}
@@ -360,6 +383,8 @@ there may be a confounding variable at play.
 \end{Highlighting}
 \end{Shaded}
 
+\pandocbounded{\includegraphics[keepaspectratio]{lab-07-simpsons-paradox_files/figure-latex/unnamed-chunk-9-1.pdf}}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Extended contingency table with conditional probabilities by age group}
@@ -372,6 +397,12 @@ there may be a confounding variable at play.
   \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ smoker, }\AttributeTok{values\_from =}\NormalTok{ prop)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 0 x 1
+## # Groups:   age_cat [0]
+## # i 1 variable: age_cat <fct>
+\end{verbatim}
 
 What changed: When we control for age, the relationship reverses! Within
 each age group, smokers now show higher mortality rates than
